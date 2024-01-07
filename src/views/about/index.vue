@@ -15,7 +15,7 @@ const handleAddCounter = (val)=>{
         about页面
         <br>
         当前couter:{{ counter }} 
-        <button @click="handleAddCounter(1)">当前couter+1</button>
+        <button @click="handleAddCounter(1)">点击当前couter+1</button>
     </div>
 </template>
 <style scoped>

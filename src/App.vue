@@ -11,6 +11,7 @@ console.log(import.meta.env)
     <RouterLink to="/about"> about </RouterLink>
     <RouterLink to="/demos"> Demos </RouterLink>
     <RouterLink to="/weathers"> weathers </RouterLink>
+    <RouterLink to="/ui"> 使用element plus </RouterLink>
   </nav>
   <RouterView/>
 </template>

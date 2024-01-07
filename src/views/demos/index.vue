@@ -1,4 +1,3 @@
-
 <script setup lange='ts'>
 import {computed} from "vue"
 import {useSettingStore} from "@/store/modules/setting.ts"
@@ -15,7 +14,7 @@ const handleAddCounter = (val)=>{
         demos页面
         <br>
         当前couter:{{ counter }} 
-        <button @click="handleAddCounter(2)">当前couter+2</button>
+        <button @click="handleAddCounter(2)">点击当前couter+2</button>
     </div>
 </template>
 <style scoped>

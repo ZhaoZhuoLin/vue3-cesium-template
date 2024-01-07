@@ -8,10 +8,10 @@ export const useSettingStore = defineStore('settingStore',{
         }
     },
     actions:{
-        setName(value:String){
+        setName(value:string){
             this.name = value;
         },
-        addCounter(value:String){
+        addCounter(value:number){
             this.counter+= value;
         }
     },
