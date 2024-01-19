@@ -22,6 +22,6 @@ const handleWeather = async () => {
 <style scoped lang="scss">
 span{
    font-size: 20px;
-  color: $defaultColor;
+  // color: $defaultColor;
 }
 </style>

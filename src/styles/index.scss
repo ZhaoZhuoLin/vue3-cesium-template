@@ -1,4 +1,4 @@
-$defaultColor:#1989fa;
+@import './variables.scss';
 a {
   font-weight: 500;
   color: #646cff;
@@ -19,5 +19,6 @@ body {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  color:$defaultColor
 }
 
