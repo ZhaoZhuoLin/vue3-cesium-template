@@ -12,6 +12,7 @@ console.log(import.meta.env)
     <RouterLink to="/demos"> Demos </RouterLink>
     <RouterLink to="/weathers"> weathers </RouterLink>
     <RouterLink to="/ui"> 使用element plus </RouterLink>
+    <RouterLink to="/map"> cesium map </RouterLink>
   </nav>
   <RouterView/>
 </template>

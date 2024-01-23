@@ -5,6 +5,7 @@ import about from '@/views/about/index.vue'
 import demos from '@/views/demos/index.vue'
 import weathers from '@/views/weathers/index.vue'
 import ui from '@/views/ui/index.vue'
+import map from '@/views/map/index.vue'
 NProgress.configure({
   showSpinner: false
 })
@@ -41,6 +42,14 @@ const asyncRoutes = [{
    name: 'ui',
     meta: {
         title: 'ui',
+         requiresAuth: false
+    }
+},{
+  path: '/map',
+  component:map,
+   name: 'map',
+    meta: {
+        title: 'map',
          requiresAuth: false
     }
 }]
