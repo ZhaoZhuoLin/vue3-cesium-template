@@ -1,3 +1,11 @@
+<!--
+ * @Author: FlyZhao 46128378+zhaoZhuolin@users.noreply.github.com
+ * @Date: 2024-01-05 14:38:17
+ * @LastEditors: FlyZhao 46128378+zhaoZhuolin@users.noreply.github.com
+ * @LastEditTime: 2024-02-06 17:40:35
+ * @FilePath: \vite-vue-cesium-template\README.md
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <h1 align="Vue 3 + TypeScript + Vite + Cesium">代码时间</h1>
 
 ## 仓库介绍
@@ -21,6 +29,6 @@ npm install
 npm run dev
 ```
 ## 待集成
-* [ ] [commitlint](https://commitlint.js.org/#/)
+* [x] [commitlint](https://commitlint.js.org/#/)
 * [ ] [Truf](https://turfjs.org/)
 * [ ] [d3](https://d3js.org/)

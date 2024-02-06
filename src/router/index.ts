@@ -6,16 +6,18 @@ import demos from '@/views/demos/index.vue'
 import weathers from '@/views/weathers/index.vue'
 import ui from '@/views/ui/index.vue'
 import map from '@/views/map/index.vue'
+import timer from '@/views/timer/index.vue'
+import watch from '@/views/watch/index.vue'
 NProgress.configure({
   showSpinner: false
 })
 
 const asyncRoutes = [{
-    path: '/about',
-    component:about,
-     name: 'about',
+    path: '/',
+    component:map,
+     name: 'map',
       meta: {
-          title: 'about',
+          title: 'map',
           icon: '关于我们',
           requiresAuth: false
       }
@@ -37,19 +39,11 @@ const asyncRoutes = [{
          requiresAuth: false
     }
 },{
-  path: '/ui',
-  component:ui,
-   name: 'ui',
+  path: '/watch',
+  component:watch,
+   name: 'watch',
     meta: {
-        title: 'ui',
-         requiresAuth: false
-    }
-},{
-  path: '/map',
-  component:map,
-   name: 'map',
-    meta: {
-        title: 'map',
+        title: 'watch',
          requiresAuth: false
     }
 }]

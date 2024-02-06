@@ -14,7 +14,7 @@ const init = () => {
 </template>
 <style scoped>
 #cesiumContainer {
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  height: 100%;
 }
 </style>
