@@ -1,4 +1,4 @@
-<script setup lange="ts">
+<script setup  >
 import * as Cesium from "cesium";
 import { computed, onMounted } from "vue";
 onMounted(() => {

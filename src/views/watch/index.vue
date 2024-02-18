@@ -1,4 +1,4 @@
-<script setup lange="ts">
+<script setup  >
 import { ref, watch, reactive,watchEffect  } from "vue";
 const age = ref(18);
 

@@ -1,4 +1,4 @@
-<script setup lange="ts">
+<script setup>
 import {computed} from "vue"
 
 import {useWeatherStore} from "@/store/modules/weather.ts"

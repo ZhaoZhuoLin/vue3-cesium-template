@@ -1,4 +1,4 @@
-<script setup lange='ts'>
+<script setup  >
 import {computed} from "vue"
 import {useSettingStore} from "@/store/modules/setting.ts"
 const settingStore  = useSettingStore()

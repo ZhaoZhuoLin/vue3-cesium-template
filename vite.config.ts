@@ -9,6 +9,7 @@ import cesium from "vite-plugin-cesium";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base:"./",
   plugins: [    
     vue(),
     cesium(),
@@ -22,7 +23,7 @@ export default defineConfig({
       defaultLocale: 'zh-cn'
     })
   ],
-  //配置别名
+  //配置别名 
   resolve:{
     alias:{
       '@': path.resolve(__dirname, './src'),

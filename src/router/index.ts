@@ -1,21 +1,14 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-import about from '@/views/about/index.vue'
-import demos from '@/views/demos/index.vue'
-import weathers from '@/views/weathers/index.vue'
-import ui from '@/views/ui/index.vue'
-import map from '@/views/map/index.vue'
-import timer from '@/views/timer/index.vue'
-import watch from '@/views/watch/index.vue'
 NProgress.configure({
   showSpinner: false
 })
 
 const asyncRoutes = [{
     path: '/',
-    component:map,
-     name: 'map',
+    component: () => import("@/views/map/index.vue"),
+    name: 'map',
       meta: {
           title: 'map',
           icon: '关于我们',
@@ -23,7 +16,7 @@ const asyncRoutes = [{
       }
 },{
   path: '/demos',
-  component:demos,
+  component: () => import("@/views/demos/index.vue"),
    name: 'demos',
     meta: {
         title: 'demos',
@@ -32,7 +25,7 @@ const asyncRoutes = [{
     }
 },{
   path: '/weathers',
-  component:weathers,
+  component: () => import("@/views/weathers/index.vue"),
    name: 'weathers',
     meta: {
         title: 'weathers',
@@ -40,7 +33,7 @@ const asyncRoutes = [{
     }
 },{
   path: '/watch',
-  component:watch,
+  component: import("@/views/watch/index.vue"),
    name: 'watch',
     meta: {
         title: 'watch',
@@ -50,8 +43,9 @@ const asyncRoutes = [{
 
 // 创建路由
 const router = createRouter({
-    history: createWebHistory(
-      import.meta.env.BASE_URL),
+    // history: createWebHistory(
+    //   import.meta.env.BASE_URL),
+  history: createWebHashHistory(),
     routes: asyncRoutes
 })
 
