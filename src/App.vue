@@ -1,18 +1,20 @@
-<!--
- * @Author: FlyZhao 46128378+zhaoZhuolin@users.noreply.github.com
- * @Date: 2024-01-05 14:38:17
- * @LastEditors: FlyZhao 46128378+zhaoZhuolin@users.noreply.github.com
- * @LastEditTime: 2024-02-18 09:46:35
- * @FilePath: \vite-vue-cesium-template\src\App.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 <script setup lang="ts">
+import { computed } from "vue";
+import { useSettingStore } from "@/store/modules/setting.ts";
+const SettingStore = useSettingStore();
+// 配置全局组件大小
+const globalComSize = computed(() => SettingStore.themeConfig.globalComSize);
+// 配置element中文
+import zhCn from "element-plus/es/locale/lang/zh-cn";
 </script>
-
-<template> 
-  <RouterView />
+<template>
+  <el-config-provider :size="globalComSize" :locale="zhCn">
+    <RouterView />
+  </el-config-provider>
 </template>
 
-<style scoped>
- 
+<style lang="scss" scoped>
+#app {
+  color: $primaryColor;
+}
 </style>

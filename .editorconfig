@@ -1,0 +1,15 @@
+# http://editorconfig.org
+root = true
+
+[*] #表示所有文件适用
+charset = utf-8 #设置文件的字符编码为UTF-8
+indent_style = space # 设置缩进风格为空格 (space | Tab)
+indent_size = 2 #设置缩进的空格数量为2
+end_of_line = lf #设置行尾字符为LF（换行符）。表示文件适用Unix风格的行尾,不是windows的 CR+LF (lf | cr | crlf)
+insert_final_newline = true #在文件的最后自动插入一个换行符
+trim_trailing_whitespace = true #在保存文件时自动删除行尾的空白字符
+max_line_length = 130 # 最大行长度
+
+[*.md]
+insert_final_newline = false
+trim_trailing_whitespace = false

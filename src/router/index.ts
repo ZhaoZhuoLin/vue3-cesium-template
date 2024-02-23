@@ -1,87 +1,86 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
+import { createRouter, createWebHashHistory } from "vue-router";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
 NProgress.configure({
-  showSpinner: false
-})
+  showSpinner: false,
+});
 
-const asyncRoutes = [{
-    path: '/',
-    component: () => import("@/views/map/index.vue"),
-    name: 'map',
-      meta: {
-          title: 'map',
-          icon: '关于我们',
-          requiresAuth: false
-      }
-},{
-  path: '/demos',
-  component: () => import("@/views/demos/index.vue"),
-   name: 'demos',
-    meta: {
-        title: 'demos',
-        icon: '关于我们',
-        requiresAuth: false
-    }
-},{
-  path: '/weathers',
-  component: () => import("@/views/weathers/index.vue"),
-   name: 'weathers',
-    meta: {
-        title: 'weathers',
-         requiresAuth: false
-    }
-},{
-  path: '/watch',
-  component: import("@/views/watch/index.vue"),
-   name: 'watch',
-    meta: {
-        title: 'watch',
-         requiresAuth: false
-    }
-}]
+/**
+ * path ==> 路由路径
+ * name ==> 路由名称
+ * component ==> 路由组件
+ * redirect ==> 路由重定向
+ * alwaysShow ==> 如果设置为true，将始终显示根菜单，无论其子路由长度如何
+ * hidden ==> 如果“hidden:true”不会显示在侧边栏中（默认值为false）
+ * keepAlive ==> 设为true 缓存
+ * meta ==> 路由元信息
+ * meta.title ==> 路由标题
+ * meta.icon ==> 菜单icon
+ * meta.affix ==> 如果设置为true将会出现在 标签栏中
+ * meta.breadcrumb ==> 如果设置为false，该项将隐藏在breadcrumb中（默认值为true）
+ * meta.activeMenu ==> 详情页的时候可以设置菜单高亮 ,高亮菜单的path
+ */
+
+export const constantRoutes = [
+  {
+    path: "/login",
+    name: "Login",
+    component: () => import("@/views/login/index.vue"),
+    hidden: true,
+    meta: { title: "登录" },
+  },
+  {
+    path: "/404",
+    name: "404",
+    component: () => import("@/views/errorPages/404.vue"),
+    hidden: true,
+    meta: { title: "登录" },
+  },
+  {
+    path: "/",
+    name: "layout",
+    component: () => import("@/layout/index.vue"),
+    meta: { title: "首页", icon: "HomeFilled" },
+    redirect: "/home",
+    children: [
+      {
+        path: "/home",
+        component: () => import("@/views/home/index.vue"),
+        name: "home",
+        meta: { title: "首页", icon: "HomeFilled", affix: true, role: ["other"] },
+      },
+    ],
+  },
+  {
+    path: "/demos",
+    name: "demos",
+    component: () => import("@/layout/index.vue"),
+    meta: { title: "测试case", icon: "Opportunity" },
+    children: [
+      {
+        path: "/demos/cesiumMap",
+        component: () => import("@/views/demos/cesiumMap.vue"),
+        name: "cesiumMap",
+        meta: { keepAlive: true, title: "搭建Map", icon: "Menu", role: ["other"] },
+      },
+      {
+        path: "/demos/test",
+        component: () => import("@/views/demos/test.vue"),
+        name: "test",
+        meta: { keepAlive: true, title: "测试页面", icon: "Menu", role: ["other"] },
+      },
+    ],
+  },
+];
+
+export const asyncRoutes = [];
 
 // 创建路由
 const router = createRouter({
-    // history: createWebHistory(
-    //   import.meta.env.BASE_URL),
+  // history: createWebHistory(
+  //   import.meta.env.BASE_URL),
   history: createWebHashHistory(),
-    routes: asyncRoutes
-})
+  routes: constantRoutes,
+});
 
-/**
- * 全局前置守卫
- */
-router.beforeEach((to, from,next) => {
-    //设置标题,加载系统动画等
-    //判断路由权限
-    NProgress.start()
-    console.log(to)
-    next()
-})
- /**
-   * 全局解析守卫
-   */
- router.beforeResolve(async (to) => {
-    if (to.meta.isAdmin) {
-      try {
-        console.log(to)
-      }
-      catch (error) { 
-        console.error(error)
-      }
-    }
-  })
-  /**
-   * 全局后置守卫
-   */
-  router.afterEach((to, from, failure) => {
-    // 改标题,监控上报一些基础信息,
-    // 例如：统计点击xx模块xx次
-    NProgress.done()
-     if (failure) {
-      console.error(failure)
-    } 
-  })
-
-export default router
+export default router;
