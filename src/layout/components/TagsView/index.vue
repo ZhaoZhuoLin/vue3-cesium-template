@@ -2,9 +2,9 @@
 import path from "path-browserify";
 import { useRoute, useRouter } from "vue-router";
 import { onMounted, ref, computed, watch } from "vue";
-import { useTagsView } from "@/store/modules/tagsView.ts";
+import { useTagsViewStore } from "@/store/modules/tagsView.ts";
 import { usePermissionStore } from "@/store/modules/permission.ts";
-const TagsViewStore = useTagsView();
+const TagsViewStore = useTagsViewStore();
 const PermissionStore = usePermissionStore();
 
 const route = useRoute();

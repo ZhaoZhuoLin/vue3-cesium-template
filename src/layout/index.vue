@@ -1,5 +1,6 @@
 <script setup lange="ts">
 import { computed } from "vue";
+import SettingTheme from "@/layout/components/Header/components/SettingTheme.vue";
 import { useSettingStore } from "@/store/modules/setting.ts";
 import LayoutVertical from "./LayoutVertical/index.vue";
 const body = document.body;
@@ -16,6 +17,7 @@ const classObj = computed(() => {
 <template>
   <div class="g-container-layout" :class="classObj">
     <LayoutVertical />
+    <SettingTheme />
   </div>
 </template>
 <style lang="scss" scoped>

@@ -25,11 +25,18 @@ router.beforeEach(async (to, from, next) => {
       // 如果已登录，请重定向到主页
       next({ path: "/" });
     } else {
-      const PermissionStore = usePermissionStore();
-      const accessRoutes = await PermissionStore.generateRoutes(UserStore.roles);
-      next();
-      //动态添加访问路由表
-      // accessRoutes.forEach((item) => router.addRoute(item))
+      try {
+        const PermissionStore = usePermissionStore();
+        if(!PermissionStore.routes.length){
+          const accessRoutes = await PermissionStore.generateRoutes(UserStore.roles);
+          accessRoutes.forEach((item) => router.addRoute(item))
+          next({ ...to, replace: true }) // // 这里相当于push到一个页面 不在进入路由拦截
+        }else{
+          next();
+        }
+      } catch (error) {
+        next(`/login?redirect=${to.path}`)
+      }
     }
   } else {
     if (whiteList.indexOf(to.path) !== -1) {

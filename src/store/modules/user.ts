@@ -8,7 +8,7 @@ export const useUserStore = defineStore({
     //登录用户信息
     userInfo: {},
     // 角色
-    roles: [],
+    roles: localStorage.roles ? JSON.parse(localStorage.roles) : [],
   }),
   getters: {},
   actions: {

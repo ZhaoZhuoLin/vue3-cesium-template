@@ -1,3 +1,24 @@
+<template>
+  <template v-if="!item.hidden">
+    <template v-if="!item.alwaysShow && hasOneShowingChild(item.children, item)">
+      <Link v-if="onlyOneChild.meta" :to="onlyOneChild.path">
+        <el-menu-item :index="onlyOneChild.path">
+          <el-icon :size="20">
+            <component :is="onlyOneChild?.meta.icon"></component>
+          </el-icon>
+          <template #title> {{ onlyOneChild.meta && onlyOneChild.meta.title }}</template>
+        </el-menu-item>
+      </Link>
+    </template>
+    <el-sub-menu :index="item.path" v-else teleported>
+      <template #title>
+        <el-icon :size="20"> <component :is="item.meta?.icon"></component></el-icon>
+        <span>{{ item.meta && item.meta.title }}</span>
+      </template>
+      <SubItem v-for="child in item.children" :key="child.path" :item="child" />
+    </el-sub-menu>
+  </template>
+</template>
 <script setup lange="ts">
 import { ref } from "vue";
 import Link from "./Link.vue";
@@ -31,27 +52,4 @@ const hasOneShowingChild = (children = [], parent) => {
   return false;
 };
 </script>
-<template>
-  <template v-if="!item.hidden">
-    <template v-if="!item.alwaysShow && hasOneShowingChild(item.children, item)">
-      <Link v-if="onlyOneChild.meta" :to="onlyOneChild.path">
-        <el-menu-item :index="onlyOneChild.path">
-          <template #title>
-            <el-icon :size="20">
-              <component :is="onlyOneChild?.meta.icon"></component>
-            </el-icon>
-            {{ onlyOneChild.meta && onlyOneChild.meta.title }}</template
-          >
-        </el-menu-item>
-      </Link>
-    </template>
-    <el-sub-menu :index="item.path" v-else teleported>
-      <template #title>
-        <el-icon :size="20"> <component :is="item.meta?.icon"></component></el-icon>
-        <span>{{ item.meta && item.meta.title }}</span>
-      </template>
-      <SubItem v-for="child in item.children" :key="child.path" :item="child" />
-    </el-sub-menu>
-  </template>
-</template>
 <style scoped></style>

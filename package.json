@@ -23,6 +23,7 @@
     "nprogress": "^0.2.0",
     "path-browserify": "^1.0.1",
     "pinia": "^2.1.7",
+    "pinia-plugin-persistedstate": "^3.2.1",
     "vite-plugin-cesium": "^1.2.22",
     "vue": "^3.3.11",
     "vue-qr": "^4.0.9",

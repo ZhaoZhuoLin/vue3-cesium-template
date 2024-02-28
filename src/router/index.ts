@@ -5,6 +5,16 @@ NProgress.configure({
   showSpinner: false,
 });
 
+
+import demos from "./modules/demo.js"
+import system from "./modules/system.js"
+import imageryProvider from "./modules/map.js"
+
+export const asyncRoutes = [
+  ...demos,
+  ...system,
+  ...imageryProvider,
+];
 /**
  * path ==> 路由路径
  * name ==> 路由名称
@@ -23,16 +33,15 @@ NProgress.configure({
 
 export const constantRoutes = [
   {
+    path: '/404',
+    name: '404',
+    component: () => import('@/views/errorPages/404.vue'),
+    hidden: true,
+  },
+  {
     path: "/login",
     name: "Login",
     component: () => import("@/views/login/index.vue"),
-    hidden: true,
-    meta: { title: "登录" },
-  },
-  {
-    path: "/404",
-    name: "404",
-    component: () => import("@/views/errorPages/404.vue"),
     hidden: true,
     meta: { title: "登录" },
   },
@@ -52,33 +61,21 @@ export const constantRoutes = [
     ],
   },
   {
-    path: "/demos",
-    name: "demos",
-    component: () => import("@/layout/index.vue"),
-    meta: { title: "测试case", icon: "Opportunity" },
-    children: [
-      {
-        path: "/demos/cesiumMap",
-        component: () => import("@/views/demos/cesiumMap.vue"),
-        name: "cesiumMap",
-        meta: { keepAlive: true, title: "搭建Map", icon: "Menu", role: ["other"] },
-      },
-      {
-        path: "/demos/test",
-        component: () => import("@/views/demos/test.vue"),
-        name: "test",
-        meta: { keepAlive: true, title: "测试页面", icon: "Menu", role: ["other"] },
-      },
-    ],
+    path: "/dataScreen",
+    name: "可视化大屏",
+    component: () => import("@/views/dataScreen/index.vue"),
+     meta: { title: "可视化大屏",icon: "Histogram" },
   },
 ];
 
-export const asyncRoutes = [];
+export const notFoundRouter = {
+    path: '/:pathMatch(.*)',
+  name: 'notFound',
+  redirect: '/404',
+}
 
 // 创建路由
 const router = createRouter({
-  // history: createWebHistory(
-  //   import.meta.env.BASE_URL),
   history: createWebHashHistory(),
   routes: constantRoutes,
 });

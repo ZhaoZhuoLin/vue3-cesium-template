@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 
-export const useTagsView = defineStore({
-  id: "tagsView",
+export const useTagsViewStore = defineStore({
+  id: "tagsViewStore",
   state: () => {
     return {
       //当前选中tabs
@@ -16,7 +16,7 @@ export const useTagsView = defineStore({
     setActiveTabeValue(val) {
       this.activeTabsValue = val;
     },
-    // 添加tag
+    // add Tag
     addVisitedRoute(tag) {
       this.activeTabsValue = tag.path;
       if (this.visitedRoute.some((v) => v.path === tag.path)) return;
@@ -43,8 +43,11 @@ export const useTagsView = defineStore({
     delVisitedRoute(path) {
       return new Promise((resolve) => {
         this.visitedRoute = this.visitedRoute.filter((v) => {
-          return v.path !== path;
+          return v.path !== path || v.meta.affix
         });
+        // this.cacheRoute = this.cacheRoute.filter((v) => {
+        //   return v.path !== path ||  v.meta.affix
+        // });
         resolve([...this.visitedRoute]);
       });
     },
@@ -55,5 +58,12 @@ export const useTagsView = defineStore({
         resolve([...this.cacheRoute]);
       });
     },
+    clearAllRouter(){
+      return new Promise((resolve)=>{
+        this.visitedRoute = this.visitedRoute.filter((v)=>v.meta.affix)
+        this.cacheRoute = this.cacheRoute.filter((v)=>v.meta.affix)
+        resolve([...this.visitedRoute])
+      })
+    }
   },
 });

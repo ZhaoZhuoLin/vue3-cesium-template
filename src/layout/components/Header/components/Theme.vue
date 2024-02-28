@@ -1,4 +1,10 @@
-<script setup lange="ts"></script>
+<script setup lange="ts">
+import { useSettingStore } from "@/store/modules/setting.ts";
+const SettingStore = useSettingStore();
+const changeSwitch = (key, val) => {
+  SettingStore.setThemeConfig({ key, val });
+};
+</script>
 <template>
   <div class="m-setting">
     <el-tooltip effect="dark" content="主题设置" placement="bottom">

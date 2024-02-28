@@ -59,9 +59,9 @@ export const useSettingStore = defineStore({
       this.counter += value;
     },
     // 设置主题
-    setThemeConfig({ key, val }) {
+    setThemeConfig(key, val) {
       this.themeConfig[key] = val;
-    },
+     },
     // 切换 Collapse
     setCollapse(value) {
       this.isCollapse = value;
