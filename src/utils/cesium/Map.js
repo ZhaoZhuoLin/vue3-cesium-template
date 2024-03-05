@@ -10,6 +10,7 @@ export default class Map {
    * @param {Boolean} [viewOptions.handKeyEvent=true] 是否开启常用的辅助快捷键:空格正视地球,F查看FPS,R显示地球三角网
    */
   initViewer(cesiumContainer, viewOptions) {
+    this.token = "ae7be23d49a12c4778df3b7cbb660f97";
     this._cesiumContainer = typeof cesiumContainer === "string" ? document.getElementById(cesiumContainer) : cesiumContainer;
     this._options = viewOptions ? viewOptions : {}
     this.viewer = null;
@@ -54,7 +55,43 @@ export default class Map {
       return
     } else {
       this.viewer = new Cesium.Viewer(this._cesiumContainer, this._options);
+      this.initImageryLayers(this.viewer);
     }
+  }
+  initImageryLayers(viewer){
+    // 服务域名
+    var tdtUrl = "https://t{s}.tianditu.gov.cn/";
+    // 服务负载子域
+    var subdomains = ["0", "1", "2", "3", "4", "5", "6", "7"];
+
+    // 叠加影像服务
+    var imgMap = new Cesium.UrlTemplateImageryProvider({
+      url: tdtUrl + "DataServer?T=img_w&x={x}&y={y}&l={z}&tk=" + this.token,
+      subdomains: subdomains,
+      tilingScheme: new Cesium.WebMercatorTilingScheme(),
+      maximumLevel: 18,
+    });
+    viewer.imageryLayers.addImageryProvider(imgMap);
+
+    // 叠加影像服务
+    var imgMapCia_w = new Cesium.UrlTemplateImageryProvider({
+      url: tdtUrl + "DataServer?T=cia_w&x={x}&y={y}&l={z}&tk=" + this.token,
+      subdomains: subdomains,
+      tilingScheme: new Cesium.WebMercatorTilingScheme(),
+      maximumLevel: 18,
+    });
+    viewer.imageryLayers.addImageryProvider(imgMapCia_w);
+
+    // 叠加国界服务
+    var iboMap = new Cesium.UrlTemplateImageryProvider({
+      url: tdtUrl + "DataServer?T=ibo_w&x={x}&y={y}&l={z}&tk=" + this.token,
+      subdomains: subdomains,
+      tilingScheme: new Cesium.WebMercatorTilingScheme(),
+      maximumLevel: 10,
+    });
+    viewer.imageryLayers.addImageryProvider(iboMap);
+
+
   }
 
   /**

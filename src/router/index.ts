@@ -6,14 +6,16 @@ NProgress.configure({
 });
 
 
-import demos from "./modules/demo.js"
-import system from "./modules/system.js"
-import imageryProvider from "./modules/map.js"
+ import system from "./modules/system.js"
+import map from "./modules/map.js"
+import vector from "./modules/vector.js"
+import render from "./modules/render.js"
 
 export const asyncRoutes = [
-  ...demos,
-  ...system,
-  ...imageryProvider,
+  //  ...system,
+  ...map,
+  ...vector,
+  ...render
 ];
 /**
  * path ==> 路由路径
