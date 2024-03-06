@@ -6,16 +6,16 @@ NProgress.configure({
 });
 
 
- import system from "./modules/system.js"
+import system from "./modules/system.js"
 import map from "./modules/map.js"
-import vector from "./modules/vector.js"
-import render from "./modules/render.js"
+import graphic from "./modules/graphic.js"
+import tiles from "./modules/tiles.js"
 
 export const asyncRoutes = [
   //  ...system,
   ...map,
-  ...vector,
-  ...render
+  ...tiles,
+  ...graphic,
 ];
 /**
  * path ==> 路由路径

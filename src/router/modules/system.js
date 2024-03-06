@@ -2,7 +2,7 @@
 
 import Layout from '@/layout/index.vue'
 
-const systemRouter = [
+export default   [
   {
     path: '/system',
     name: 'system',
@@ -47,4 +47,4 @@ const systemRouter = [
   },
 ]
 
-export default systemRouter
+

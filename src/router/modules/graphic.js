@@ -2,23 +2,23 @@
 
 import Layout from '@/layout/index.vue'
 
-const vector = [
+export default  [
   {
-    path: "/vector",
-    name: "vector",
+    path: "/graphic",
+    name: "graphic",
     component: () => import("@/layout/index.vue"),
-    meta: { title: "Entity基础对象", icon: "Opportunity" },
-    redirect: '/system/entity',
+    meta: { title: "矢量图层", icon: "Opportunity" },
+    redirect: '/graphic/entity',
     children: [
       {
-        path: "/vector/entity",
-        component: () => import("@/views/vector/entity.vue"),
+        path: "/graphic/entity",
+        component: () => import("@/views/graphic/entity.vue"),
         name: "entity",
         meta: { keepAlive: true, title: "Entity基础对象", icon: "Menu",  },
       },
       {
-        path: "/vector/boundaryUplift",
-        component: () => import("@/views/vector/boundaryUplift.vue"),
+        path: "/graphic/boundaryUplift",
+        component: () => import("@/views/graphic/boundaryUplift.vue"),
         name: "div",
         meta: { keepAlive: true, title: "边界抬升", icon: "Menu",   },
       },
@@ -27,4 +27,3 @@ const vector = [
   },
 ]
 
-export default vector
