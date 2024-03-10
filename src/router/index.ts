@@ -14,31 +14,6 @@ const asyncRoutes = [{
           icon: '关于我们',
           requiresAuth: false
       }
-},{
-  path: '/demos',
-  component: () => import("@/views/demos/index.vue"),
-   name: 'demos',
-    meta: {
-        title: 'demos',
-        icon: '关于我们',
-        requiresAuth: false
-    }
-},{
-  path: '/weathers',
-  component: () => import("@/views/weathers/index.vue"),
-   name: 'weathers',
-    meta: {
-        title: 'weathers',
-         requiresAuth: false
-    }
-},{
-  path: '/watch',
-  component: import("@/views/watch/index.vue"),
-   name: 'watch',
-    meta: {
-        title: 'watch',
-         requiresAuth: false
-    }
 }]
 
 // 创建路由
