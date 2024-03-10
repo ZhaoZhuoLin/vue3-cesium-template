@@ -41,7 +41,7 @@
   width: calc(100% - 60px);
 }
 .no-collapse {
-  width: calc(100% - 210px);
+  width: calc(100% - $sideBarWidth);
 }
 
 .el-dropdown {

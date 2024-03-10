@@ -1,16 +1,22 @@
 <script setup lange="ts" name="CollapseIcon">
 import { useSettingStore } from "@/store/modules/setting.ts";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 const SettingStore = useSettingStore();
 const isCollapse = computed(() => !SettingStore.isCollapse);
+const content = computed(() => (isCollapse.value ? "点击折叠" : "点击展开"));
+
 const handleCollapse = () => {
   SettingStore.setCollapse(isCollapse.value);
 };
 </script>
 <template>
   <div class="hamburger-container" @click="handleCollapse">
-    <el-icon class="icon" v-if="isCollapse"><expand /></el-icon>
-    <el-icon class="icon" v-else><fold /></el-icon>
+    <el-tooltip class="box-item" effect="dark" :content="content" placement="right">
+      <el-icon size="16" class="icon" color="#409eff" v-if="isCollapse"
+        ><expand
+      /></el-icon>
+      <el-icon size="16" class="icon" color="#409eff" v-else><fold /></el-icon>
+    </el-tooltip>
   </div>
 </template>
 <style lang="scss" scoped>

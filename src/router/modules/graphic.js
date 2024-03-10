@@ -22,7 +22,12 @@ export default  [
         name: "div",
         meta: { keepAlive: true, title: "边界抬升", icon: "Menu",   },
       },
-
+      {
+        path: "/graphic/box",
+        component: () => import("@/views/graphic/box.vue"),
+        name: "div",
+        meta: { keepAlive: true, title: "box", icon: "Menu",   },
+      },
     ],
   },
 ]

@@ -14,10 +14,15 @@
         <SubItem v-for="route in permission_routes" :key="route.path" :item="route" />
       </el-menu>
     </el-scrollbar>
+    <!-- <span>456456465465</span> -->
+    <!-- <Logo :isCollapse="isCollapse" v-if="themeConfig.showLogo" /> -->
+
+    <LeftCollapse />
   </div>
 </template>
 <script setup lange="ts">
 import SubItem from "./components/SubItem.vue";
+import LeftCollapse from "./components/LeftCollapse.vue";
 import { useRoute } from "vue-router";
 import { useSettingStore } from "@/store/modules/setting";
 import { usePermissionStore } from "@/store/modules/permission";

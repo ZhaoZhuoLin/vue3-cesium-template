@@ -4,7 +4,7 @@ import Hamburger from "./components/Hamburger.vue";
 </script>
 <template>
   <div class="m-tool-left">
-    <CollapseIcon />
+    <!-- <CollapseIcon /> -->
     <Hamburger />
   </div>
 </template>
@@ -13,5 +13,6 @@ import Hamburger from "./components/Hamburger.vue";
   display: flex;
   align-items: center;
   height: 100%;
+  padding: 0px 15px;
 }
 </style>
