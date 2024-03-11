@@ -2,7 +2,6 @@
 import * as Cesium from "cesium";
 import { onMounted } from "vue";
 import Map from "@/utils/cesium/Map.js";
-import add from "meteolib.util.test";
 onMounted(() => {
   const map = new Map();
   const viewer = map.initViewer("cesiumContainer", {});

@@ -10,14 +10,6 @@ let viewer = null;
 onMounted(() => {
   const map = new Map();
   viewer = map.initViewer("cesiumContainer", {});
-  let boundaryUpliftLayer = new BoundaryUplift(viewer, 110000);
-  // console.log(boundaryUpliftLayer);
-  // modifyMap(viewer, {
-  //   //反色?
-  //   invertColor: true,
-  //   //滤色值
-  //   filterRGB: [8, 75, 177],
-  // });
   let coordinates = border.features[0].geometry.coordinates;
   let wallData = [];
   let wallDataPoly = [];

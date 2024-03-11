@@ -19,13 +19,13 @@ export default  [
       {
         path: "/graphic/boundaryUplift",
         component: () => import("@/views/graphic/boundaryUplift.vue"),
-        name: "div",
+        name: "boundaryUplift",
         meta: { keepAlive: true, title: "边界抬升", icon: "Menu",   },
       },
       {
         path: "/graphic/box",
         component: () => import("@/views/graphic/box.vue"),
-        name: "div",
+        name: "box",
         meta: { keepAlive: true, title: "box", icon: "Menu",   },
       },
     ],

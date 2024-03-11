@@ -4,7 +4,7 @@ import Hamburger from "./components/Hamburger.vue";
 </script>
 <template>
   <div class="m-tool-left">
-    <!-- <CollapseIcon /> -->
+    <CollapseIcon />
     <Hamburger />
   </div>
 </template>
